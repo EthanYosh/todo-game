@@ -6,6 +6,13 @@ import Mainmenu from './components/Mainmenu';
 
 class App extends Component {
 
+  user = {
+    name: 'bob',
+    avatar: <img src="./ProfilePic.png" alt="profile pic"/>, 
+  }
+
+
+
   state = {
     todos: [
         {
@@ -49,6 +56,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.user.name}
+        {this.user.avatar}
         <Mainmenu/>
         <Todos todos={this.state.todos}/>
         <Navbar />
