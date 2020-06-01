@@ -20,7 +20,7 @@ export default class Todoitem extends Component {
 }
 
 Todoitem.propTypes = {
-    todo: PropTypes.object.isRequired
+    eachtodo: PropTypes.object.isRequired
 }
 
 

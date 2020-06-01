@@ -7,7 +7,7 @@ import Mainmenu from './components/Mainmenu';
 class App extends Component {
 
   user = {
-    name: 'bob',
+    name: <h1>Bob</h1>,
     avatar: <img src="./ProfilePic.png" alt="profile pic"/>, 
   }
 
@@ -56,8 +56,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.user.name}
-        {this.user.avatar}
+
+        <div id="theUser">
+
+          <div id="theUserName">
+            {this.user.name}
+          </div>
+
+          <div id="theUserAvatar">
+            {this.user.avatar}
+          </div>
+        </div>
+
+
+
+
         <Mainmenu/>
         <Todos todos={this.state.todos}/>
         <Navbar />

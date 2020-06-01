@@ -1,4 +1,20 @@
 * {
-    margin: 100;
-    padding: 10;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+#theUser {
+    background-color: green;
+}
+
+#theUserAvatar img {
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+#theUserName h1 {
+    display: block;
+    text-align: center;
 }
