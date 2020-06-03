@@ -104,7 +104,7 @@ class App extends Component {
 
         <Todos todos={this.state.todos} markComplete={this.markComplete}/>
         <div>
-          <input className ="newDog" type="text" value={this.state.newDoggo} onChange={this.changeDoggoName} placeholder="Type new Doggo name"></input>
+          <input className ="newDog" type="text" value={this.state.newDoggo} onChange={this.changeDoggoName} placeholder="Type new ToDo"></input>
           <button onClick={this.addDoggo} disabled={this.state.newDoggo === ""}>Add New ToDo</button>
         </div>
         <Navbar />
