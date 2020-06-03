@@ -6,7 +6,7 @@ class Todos extends Component {
 
     render() {
       return this.props.todos.map((eachtodo) => ( //the map part shows where I am. I can use the props because I put properties on this component in the App.js file.
-          <Todoitem key={eachtodo.id} eachtodo={eachtodo}/>
+          <Todoitem key={eachtodo.id} eachtodo={eachtodo} markComplete={this.props.markComplete}/>
 
 
       ));

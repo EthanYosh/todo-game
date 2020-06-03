@@ -19,7 +19,7 @@ class App extends Component {
             id: 1,
             title: 'finish new song',
             extranotes: '',
-            completed: true
+            completed: false
         },
 
         {
@@ -52,13 +52,43 @@ class App extends Component {
     ]
 }
 
+  markComplete = (id) => {
+    this.setState({todos: this.state.todos.map(todo => {
+      if(todo.id === id) {
+        todo.completed = !todo.completed
+      }
+      return todo
+    })});
+  }
+
+
+
+  changeDoggoName = (newName) => {
+    this.setState({ newDoggo: newName.target.value });
+  };
+
+
+
+
+  addDoggo = () => {
+
+    let newDog = {
+      title: this.state.newDoggo,
+    };
+
+
+    this.setState((state) => ({
+      todos: [...state.todos, newDog], //im using the spread operator because I only want to change 1 part (the new dog) and keep all the other parts the same when it re-renders
+      newDoggo: "",
+    }));
+  };
 
   render() {
     return (
+
       <div className="App">
-
+        <Mainmenu/>
         <div id="theUser">
-
           <div id="theUserName">
             {this.user.name}
           </div>
@@ -71,8 +101,12 @@ class App extends Component {
 
 
 
-        <Mainmenu/>
-        <Todos todos={this.state.todos}/>
+
+        <Todos todos={this.state.todos} markComplete={this.markComplete}/>
+        <div>
+          <input className ="newDog" type="text" value={this.state.newDoggo} onChange={this.changeDoggoName} placeholder="Type new Doggo name"></input>
+          <button onClick={this.addDoggo} disabled={this.state.newDoggo === ""}>Add New ToDo</button>
+        </div>
         <Navbar />
       </div>
     );
