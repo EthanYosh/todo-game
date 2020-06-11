@@ -1,24 +1,42 @@
-* {
-    margin: 1px;
-    padding: 10px;
-    text-align: center;
-
+h1, p {
+  text-align: center;
+  color: lightblue
 }
 
-#theUser {
-    background-color: green;
+form {
+  display: flex;
+  justify-content: center;
 }
 
-#theUserAvatar img {
-    flex-wrap: wrap;
-    margin: auto;
+
+
+.container {
+  padding: 0 1rem;
 }
 
-#theUserName h1 {
-    display: block;
-    text-align: center;
+.submitButton-addToDo {
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
 }
 
-#ham {
-    position: absolute;
+.submitButton-addToDo:hover {
+  background: rgb(119, 110, 110);
+}
+
+.bottomMenu {
+  display: flex;
+  padding: 50px;
+  background-color: #5282ca;
+  height: 20px;
+  line-height: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bodyPortion {
+  margin: auto;
+  width: 75%;
 }
