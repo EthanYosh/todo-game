@@ -129,18 +129,22 @@ class App extends Component {
     this.setState({ todosAlias });
   };
 
-  componentDidMount() {
-    const aliasForTodos = localStorage.getItem("tasknight_todos");
-    if (aliasForTodos) {
-      this.setState({ tasks: JSON.parse(aliasForTodos) });
-    }
-  }
 
   componentDidUpdate(originalTodos) {
     if (originalTodos.todos !== this.state.todos) {
       localStorage.setItem("tasknight_todos", JSON.stringify(this.state.todos));
     }
   }
+
+
+  componentDidMount() {
+    const aliasForTodos = localStorage.getItem("tasknight_todos");
+    if (aliasForTodos) {
+      this.setState({ todos: JSON.parse(aliasForTodos) });
+    }
+  }
+
+
 
 
 
