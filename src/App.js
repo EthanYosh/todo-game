@@ -5,7 +5,9 @@ import Header from './components/Header';
 import Todos from './components/Todos';
 import Add from './components/Add';
 import Shop from './components/Shop';
+import Dashboard from './components/Dashboard';
 import uuidv4 from 'uuid'
+
 
  
 
@@ -24,6 +26,30 @@ import { CSSTransition } from 'react-transition-group'; //I'm using this for tra
 import { BrowserRouter as Router, Route } from 'react-router-dom'; //im using this to "conditionally render certain components to display depending on the route being used in the url" this is how the stuff like /add or /market and stuff are made. I used this article for reference. https://www.freecodecamp.org/news/react-router-in-5-minutes/
 import { Link } from 'react-router-dom';
 
+
+function theTime() {
+
+  let theTime;
+
+  const date = new Date();
+  const currentHour = date.getHours();
+
+  if (currentHour < 12) {
+    theTime = "*Yawn... G'Mornin Tasknight!";
+  } 
+
+
+  else if (currentHour >= 12 && currentHour < 19) {
+    theTime = "Time to get some work done Tasknight!";
+  } 
+
+
+  else {
+    theTime = "Zzzz... Good Evening Tasknight!";
+  }
+
+  return { theTime };
+}
 
 class App extends Component {
 
@@ -103,6 +129,19 @@ class App extends Component {
     this.setState({ todosAlias });
   };
 
+  componentDidMount() {
+    const aliasForTodos = localStorage.getItem("tasknight_todos");
+    if (aliasForTodos) {
+      this.setState({ tasks: JSON.parse(aliasForTodos) });
+    }
+  }
+
+  componentDidUpdate(originalTodos) {
+    if (originalTodos.todos !== this.state.todos) {
+      localStorage.setItem("tasknight_todos", JSON.stringify(this.state.todos));
+    }
+  }
+
 
 
 
@@ -129,19 +168,42 @@ class App extends Component {
                       todos={this.state.todos}
                       markComplete={this.markComplete}
                       delTodo={this.delTodo}
+                      didMount={this.componentDidMount}
+                      didUpdate={this.componentDidUpdate}
                     />
                   </div>
                 </React.Fragment>
               )}
             />
           </div>
-          <Route path="/AddTask">
-            <Add addTodo={this.addTodo} />
-          </Route>
-          <Route path="/Shop" component={Shop} />
+
+
+
+
+
           <div className="bottomMenu">
             <Link style={linkStyle} to="/"><HomeIcon /></Link>        <Link style={linkStyle} to="/AddTask"><AddTaskIcon /></Link>        <Link style={linkStyle} to="/Shop"><ShopIcon /></Link>
           </div>
+
+
+
+
+{/*render the stuff inside /addtask*/}
+          <Route path="/AddTask">
+            <Add addTodo={this.addTodo} />
+          </Route>
+
+{/*render the stuff inside /shop*/}
+          <Route path="/Shop" component={Shop} />
+
+{/*render the stuff inside /profile, aka the dashboard assignment*/}
+          <Route path="/Profile">
+            <div className="dashboard-assignment">
+              <Dashboard greeting={theTime().theTime} />
+            </div>
+
+          </Route>
+
 
         </div>
       </Router>
@@ -209,6 +271,18 @@ function DropdownMenu() {
     );
   }
 
+  function DropdownFinal(props) {
+    return (
+      <a href="/Profile" className="menu-item">
+        <span className="icon-button">{props.leftIcon}</span>
+        {props.children}
+        <span className="icon-right">{props.rightIcon}</span>
+      </a>
+    );
+  }
+
+  
+
   return (
 
 /*MAIN OUTER MENU ANIMATIONSSSSSSS */
@@ -224,11 +298,11 @@ function DropdownMenu() {
 
 
         <div className="menu">
-        <DropdownItem
-            leftIcon={<ProfileIcon />}
-            goToMenu="Profile"> {/*need to decide whether I want a sub menu for profile or if it should just go straight to a profile page when clicked*/}
+          <DropdownFinal leftIcon={<ProfileIcon/>}>
             Profile
-          </DropdownItem>
+          </DropdownFinal>
+
+
           <DropdownItem
             leftIcon={<BattleIcon />}
             goToMenu="Battle">

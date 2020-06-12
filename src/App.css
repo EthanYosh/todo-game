@@ -8,10 +8,17 @@ form {
   justify-content: center;
 }
 
+.dashboard-assignment {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+}
 
 
 .container {
-  padding: 0 1rem;
+  padding: 0 1rem ;
 }
 
 .submitButton-addToDo {
