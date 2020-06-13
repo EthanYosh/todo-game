@@ -1,11 +1,42 @@
+html {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.everything {
+  height: fit-content;
+}
+
 h1, p {
   text-align: center;
   color: lightblue
 }
 
-form {
-  display: flex;
-  justify-content: center;
+#todoCheckbox {
+  float: left;
+  margin-right: 10px;
+}
+
+#todoTitle {
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+#editButton {
+  position: right;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px;
+  background: #6c8dbe;
+  color: #001;
+  border: 1px white double;
+}
+
+#addTextho {
+  text-align: start;
+  color: black;
 }
 
 .dashboard-assignment {
@@ -21,13 +52,6 @@ form {
   padding: 0 1rem ;
 }
 
-.submitButton-addToDo {
-  display: inline-block;
-  border: none;
-  background: #555;
-  color: #fff;
-  padding: 7px 20px;
-}
 
 .submitButton-addToDo:hover {
   background: rgb(119, 110, 110);
@@ -41,6 +65,7 @@ form {
   line-height: 20px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 80px;
 }
 
 .bodyPortion {

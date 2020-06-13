@@ -4,6 +4,7 @@ import React, { Component, useState, useEffect, useRef } from 'react'
 import Header from './components/Header';
 import Todos from './components/Todos';
 import Add from './components/Add';
+import Edit from './components/Edit';
 import Shop from './components/Shop';
 import Dashboard from './components/Dashboard';
 import uuidv4 from 'uuid'
@@ -59,36 +60,17 @@ class App extends Component {
             id: 1,
             title: 'finish new song',
             extranotes: '',
-            completed: false
+            completed: false,
+            isgroup: false
         },
 
         {
             id: 2,
             title: 'make lunch for family',
             extranotes: '',
-            completed: false 
+            completed: false,
+            isgroup: false
         },
-
-        {
-            id: 3,
-            title: 'brainstorm new feature ideas',
-            extranotes: '',
-            completed: false 
-        },
-
-        {
-            id: 4,
-            title: 'practice javascript more',
-            extranotes: '',
-            completed: false 
-        },
-
-        {
-            id: 5,
-            title: 'listen to new music',
-            extranotes: '',
-            completed: false 
-        }
     ]
 };
 
@@ -117,14 +99,14 @@ class App extends Component {
   };
 
 
-
-  addTodo = (titleOfTodo) => {
+  addTodo = (titleOfTodo, extranotes, isgroup) => {
     const todosAlias = this.state.todos;
     todosAlias.push({
       id: uuidv4(),
       title: titleOfTodo,
-      extranotes: "",
+      extranotes: extranotes,
       completed: false,
+      isgroup: isgroup,
     });
     this.setState({ todosAlias });
   };
@@ -152,6 +134,7 @@ class App extends Component {
 
   render() {
     return (
+      <div className="everything">
       <Router>
           <Navbar>
             <NavItem icon={<CaretIcon />}>
@@ -182,19 +165,14 @@ class App extends Component {
           </div>
 
 
-
-
-
-          <div className="bottomMenu">
-            <Link style={linkStyle} to="/"><HomeIcon /></Link>        <Link style={linkStyle} to="/AddTask"><AddTaskIcon /></Link>        <Link style={linkStyle} to="/Shop"><ShopIcon /></Link>
-          </div>
-
-
-
-
 {/*render the stuff inside /addtask*/}
           <Route path="/AddTask">
             <Add addTodo={this.addTodo} />
+          </Route>
+
+{/*render the stuff inside /Edit*/}
+          <Route path="/Edit">
+            <Edit addTodo={this.addTodo} />
           </Route>
 
 {/*render the stuff inside /shop*/}
@@ -209,8 +187,17 @@ class App extends Component {
           </Route>
 
 
+          <div className="bottomMenu">
+            <Link style={linkStyle} to="/"><HomeIcon /></Link>        <Link style={linkStyle} to="/AddTask"><AddTaskIcon /></Link>        <Link style={linkStyle} to="/Shop"><ShopIcon /></Link>
+          </div>
+
+
+
+
         </div>
       </Router>
+      </div>
+
     );
   }
 }
@@ -248,6 +235,8 @@ function Navbar(outerMenuShell) {
 var linkStyle = {
   paddingRight: '15px',
   paddingLeft: '15px',
+  paddingTop: '40px',
+  marginTop: '40px',
 }
 
 function DropdownMenu() {

@@ -34,7 +34,7 @@ var inputStyle =
   justifyContent: "center",
 };
 
-export class Add extends Component {
+export class Edit extends Component {
 
 
   state = {
@@ -57,7 +57,7 @@ export class Add extends Component {
       extranotes: '',
       isgroup: false
     });
-    alert("Successfully added a task! Please click the home icon to navigate back to your task list!")
+    alert("Successfully edited this task! Please click the home icon to navigate back to your task list!")
   }
 
   notCompleted() {
@@ -86,12 +86,12 @@ export class Add extends Component {
       <form onSubmit={this.onSubmit}>
         <div className="theInfo">
 
-          <p id="addTextho">Name</p>  
+          <p id="addTextho">Change Name</p>  
           <input 
             type="text" 
             maxlength="25"
             name="title" 
-            placeholder="TasKnight, please name your new task!" 
+            placeholder="finish this up with placeholder using this.title" 
             value={this.state.title}
             onChange={this.onChange}
             style={inputStyle}
@@ -99,11 +99,11 @@ export class Add extends Component {
 
 
 
-          <p id="addTextho">Description</p>   
+          <p id="addTextho">Change Description</p>   
           <input 
             type="text" 
             name="extranotes" 
-            placeholder="TasKnight, please describe your new task!" 
+            placeholder="finisht his up with placeholder using this.extranotes" 
             value={this.state.extranotes}
             onChange={this.onChange}
             style={inputStyle}
@@ -130,8 +130,8 @@ export class Add extends Component {
   }
 }
 
-Add.propTypes = {
+Edit.propTypes = {
   addTodo: PropTypes.func.isRequired
 }
 
-export default Add
+export default Edit
