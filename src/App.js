@@ -71,9 +71,18 @@ class App extends Component {
             completed: false,
             isgroup: false
         },
+    ],
+    
+    users: [
+      {
+          uuid: 1,
+          userName: 'admin',
+          password: 'test123',
+          isVIP: true,
+          email: 'test@kenzie.academy',
+      },
     ]
-};
-
+  };
 
 
   markComplete = id => {
