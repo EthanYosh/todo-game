@@ -35,7 +35,11 @@ export class Edit extends Component {
     todo: this.getTheTodoToEdit(),
   }
 
-  onChange = (allowTyping) => this.setState({ [allowTyping.target.name]: allowTyping.target.value });
+  onChange = (allowTyping) => {
+    const currentTodo = this.state.todo;
+    currentTodo[allowTyping.target.name] = allowTyping.target.value;
+    this.setState(currentTodo);
+  };
 
 
 

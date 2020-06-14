@@ -57,7 +57,7 @@ export class Add extends Component {
       extranotes: '',
       isgroup: false
     });
-    alert("Successfully added a task! Please click the home icon to navigate back to your task list!")
+    alert("Successfully added a task! Please click the HOME icon to navigate back to your task list, or add another task!")
   }
 
   notCompleted() {
