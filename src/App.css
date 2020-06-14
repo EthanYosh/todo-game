@@ -32,6 +32,8 @@ h1, p {
   background: #6c8dbe;
   color: #001;
   border: 1px white double;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 #addTextho {

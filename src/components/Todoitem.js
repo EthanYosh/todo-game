@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
 
 
 
@@ -58,7 +58,6 @@ export class TodoItem extends Component {
 
   render()  {
     var { id, title, completed } = this.props.todo;
-    var editButton = <button id="editButton">Edit</button>;
 
 
     return (
@@ -74,7 +73,8 @@ export class TodoItem extends Component {
           />
 
           {title}
-          <a href="/Edit">{editButton}</a>
+
+          <Link id="editButton" to={"/Edit/" + this.props.todo.id}>Edit</Link>
           
 
           {this.showDelete()}

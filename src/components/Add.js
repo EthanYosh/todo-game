@@ -89,7 +89,7 @@ export class Add extends Component {
           <p id="addTextho">Name</p>  
           <input 
             type="text" 
-            maxlength="25"
+            maxLength="25"
             name="title" 
             placeholder="TasKnight, please name your new task!" 
             value={this.state.title}
@@ -111,9 +111,9 @@ export class Add extends Component {
 
           <p id="addTextho">TasKnight, is this a group task?</p>
           <input type="radio" className="extranotes" name="isgroup" value={this.state.isgroup===true} />
-          <label for="isgroup">Yes</label><br />
-          <input type="radio" className="extranotes" name="isgroup" value={this.state.isgroup===false} checked />
-          <label for="isgroup">No</label><br />
+          <label htmlFor="isgroup">Yes</label><br />
+          <input type="radio" className="extranotes" name="isgroup" value={this.state.isgroup===false} defaultChecked />
+          <label htmlFor="isgroup">No</label><br />
 
 
           {this.showDelete()}

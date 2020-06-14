@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../App.css'
+import { withRouter } from "react-router-dom";
 
-
-var notComplete =
-{
-  border: "none",
-  background: "#555",
-  color: "#fff",
-  padding: "7px 20px",
-  opacity: "0%",
-  marginTop: "25px",
-  marginBottom: "50px",
-};
 
 var yesComplete =
 {
@@ -36,50 +25,46 @@ var inputStyle =
 
 export class Edit extends Component {
 
+  getTheTodoToEdit = () => { //is this the problem?
+    return (
+      this.props.todos.find(element => element.id === this.props.match.params.todoID) || {}
+    );
+  };
 
   state = {
-    title: '',
-    extranotes: '',
-    isgroup: false
+    todo: this.getTheTodoToEdit(),
   }
-
-
 
   onChange = (allowTyping) => this.setState({ [allowTyping.target.name]: allowTyping.target.value });
 
 
 
+
+
+
+
   onSubmit = (placeHolderVar) => {
     placeHolderVar.preventDefault();
-    this.props.addTodo(this.state.title, this.state.extranotes, this.state.isgroup);
+    this.props.editTodo(this.state.todo);
+    this.props.history.push("/");
+
     this.setState({ 
       title: '',
       extranotes: '',
       isgroup: false
     });
-    alert("Successfully edited this task! Please click the home icon to navigate back to your task list!")
+    alert("Successfully edited this task!")
   }
 
-  notCompleted() {
-    return <input type="submit" value="Submit" className="submitButton-addToDo" style={notComplete} />;
-  };
-  
-  yesCompleted() {
-    return <input type="submit" value="Submit" className="submitButton-addToDo" style={yesComplete} />;
-  };
-  
-  showDelete() {
-    if (this.state.title !== '' && this.state.extranotes !== '') {
-      return this.yesCompleted()
+  componentWillMount(pastProps) {
+    if (pastProps !== this.props) {
+      this.setState({ todo: this.getTheTodoToEdit() });
     }
-    return this.notCompleted();
   }
-
 
   render() {
+    var currentTodo = this.state.todo;
     return (
-
-
 
 
 
@@ -89,10 +74,9 @@ export class Edit extends Component {
           <p id="addTextho">Change Name</p>  
           <input 
             type="text" 
-            maxlength="25"
-            name="title" 
-            placeholder="finish this up with placeholder using this.title" 
-            value={this.state.title}
+            maxLength="25"
+            name="title"
+            value={currentTodo.title}
             onChange={this.onChange}
             style={inputStyle}
           />
@@ -103,20 +87,19 @@ export class Edit extends Component {
           <input 
             type="text" 
             name="extranotes" 
-            placeholder="finisht his up with placeholder using this.extranotes" 
-            value={this.state.extranotes}
+            value={currentTodo.extranotes}
             onChange={this.onChange}
             style={inputStyle}
           />
 
           <p id="addTextho">TasKnight, is this a group task?</p>
           <input type="radio" className="extranotes" name="isgroup" value={this.state.isgroup===true} />
-          <label for="isgroup">Yes</label><br />
-          <input type="radio" className="extranotes" name="isgroup" value={this.state.isgroup===false} checked />
-          <label for="isgroup">No</label><br />
+          <label htmlFor="isgroup">Yes</label><br />
+          <input type="radio" className="extranotes" name="isgroup" value={this.state.isgroup===false} defaultChecked />
+          <label htmlFor="isgroup">No</label><br />
 
 
-          {this.showDelete()}
+          <input type="submit" value="Submit" className="submitButton-addToDo" style={yesComplete} />
         </div>
 
 
@@ -131,7 +114,8 @@ export class Edit extends Component {
 }
 
 Edit.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  editTodo: PropTypes.func.isRequired,
+  todos: PropTypes.array.isRequired,
 }
 
-export default Edit
+export default withRouter(Edit);

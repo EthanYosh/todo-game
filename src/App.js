@@ -111,6 +111,13 @@ class App extends Component {
     this.setState({ todosAlias });
   };
 
+  editTodo = (todo) => {
+    const todosAlias = this.state.todos;
+    const taskIndex = todosAlias.findIndex((theOne) => theOne.id === todo.id); //could be this
+    todosAlias.splice(taskIndex, 1, todo);
+    this.setState({ todosAlias });
+  };
+
 
   componentDidUpdate(originalTodos) {
     if (originalTodos.todos !== this.state.todos) {
@@ -171,8 +178,8 @@ class App extends Component {
           </Route>
 
 {/*render the stuff inside /Edit*/}
-          <Route path="/Edit">
-            <Edit addTodo={this.addTodo} />
+          <Route path="/Edit/:todoID">
+            <Edit editTodo={this.editTodo} todos={this.state.todos} />
           </Route>
 
 {/*render the stuff inside /shop*/}
