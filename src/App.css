@@ -8,9 +8,14 @@ html {
   height: fit-content;
 }
 
-h1, p {
+h1, p, .samePara {
   text-align: center;
   color: lightblue
+}
+
+.samePara {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #todoCheckbox {

@@ -7,7 +7,8 @@ import Add from './components/Add';
 import Edit from './components/Edit';
 import Shop from './components/Shop';
 import Dashboard from './components/Dashboard';
-import uuidv4 from 'uuid'
+import uuidv4 from 'uuid';
+import Login from './components/Login';
 
 
  
@@ -152,17 +153,20 @@ class App extends Component {
     return (
       <div className="everything">
       <Router>
+
+
+
           <Navbar>
             <NavItem icon={<CaretIcon />}>
               <DropdownMenu></DropdownMenu>
             </NavItem>
           </Navbar>
+
+
         <div className="Appoo">
           <div className="container">
             <Header />
-            <Route
-              exact
-              path="/"
+            <Route path="/Home"
               render={props => (
                 <React.Fragment>
 
@@ -179,6 +183,11 @@ class App extends Component {
               )}
             />
           </div>
+
+
+          <Route exact path="/">
+            <Login users={this.state.users} />
+          </Route>
 
 
 {/*render the stuff inside /addtask*/}
