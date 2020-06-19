@@ -1,150 +1,141 @@
 body {
-    margin: 0;
-    background: #5282ca;
-    font-family: roboto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  a {
-    color: #000;
-    text-decoration: none;;
-  }
+  margin: 0;
+  background: #5282ca;
+  font-family: roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  .navbar {
-    height: 60px;
-    background-color: #5282ca;
-    padding: 0 1rem;
-  }
-  
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .navbar-nav {
-    max-width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
+a {
+  color: #000;
+  text-decoration: none;
+}
 
-  .nav-item {
-    width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+.navbar {
+  height: 60px;
+  background-color: #5282ca;
+  padding: 0 1rem;
+}
 
-  .icon-button {
-    width: 30px;
-    height: 30px;
-    background-color: #484a4d;
-    border-radius: 50%;
-    padding: 5px;
-    margin: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: filter 300ms;
-  }
-  
-  .icon-button:hover {
-    filter: brightness(1.2);
-  }
-  
-  .icon-button svg { 
-    fill: #fff;
-    width: 20px;
-    height: 20px;
-  }
-  
-  
+.navbar-nav {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 
-  
-  .dropdown {
-    position: absolute;
-    top: 58px;
-    width: 300px;
-    transform: translateX(-45%);
-    background-color: #5282ca;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    padding: 1rem;
-    overflow: hidden;
-    transition: height 500ms ease;
-  }
-  
-  .menu {
-    width: 100%;
-  }
-  
-  .menu-item {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    transition: background 500ms;
-    padding: 0.5rem;
-  }
-  
-  .menu-item .icon-button {
-    margin-right: 0.5rem;
-  }
-  
-  
-  .menu-item .icon-button:hover {
-    filter: none;
-  }
-  
-  .menu-item:hover {
-    background-color: #525357;
-  }
-  
-  .icon-right {
-    margin-left: auto;
-  }
-  
+.nav-item {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .outerMenu-enter {
-    position: absolute;
-    transform: translateX(-110%);
-  }
-  .outerMenu-enter-active {
-    transform: translateX(0%);
-    transition: all 500ms ease;
-  }
-  .outerMenu-exit {
-    position: absolute;
-  }
-  .outerMenu-exit-active {
-    transform: translateX(-110%);
-    transition: all 500ms ease;
-  }
-  
-  
-  .innerMenu-enter {
-    transform: translateX(110%);
-  }
-  .innerMenu-enter-active {
-    transform: translateX(0%);
-    transition: all 500ms ease;
-  }
-  .innerMenu-exit-active {
-    transform: translateX(110%);
-    transition: all 500ms ease;
-  }
+.icon-button {
+  width: 30px;
+  height: 30px;
+  background-color: #484a4d;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
 
-  .stat {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-  }
+.icon-button:hover {
+  filter: brightness(1.2);
+}
 
-  .textPad {
-    padding: 10px;
-  }
+.icon-button svg {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 58px;
+  width: 300px;
+  transform: translateX(-45%);
+  background-color: #5282ca;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: hidden;
+  transition: height 500ms ease;
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 500ms;
+  padding: 0.5rem;
+}
+
+.menu-item .icon-button {
+  margin-right: 0.5rem;
+}
+
+.menu-item .icon-button:hover {
+  filter: none;
+}
+
+.menu-item:hover {
+  background-color: #525357;
+}
+
+.icon-right {
+  margin-left: auto;
+}
+
+.outerMenu-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+.outerMenu-enter-active {
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+.outerMenu-exit {
+  position: absolute;
+}
+.outerMenu-exit-active {
+  transform: translateX(-110%);
+  transition: all 500ms ease;
+}
+
+.innerMenu-enter {
+  transform: translateX(110%);
+}
+.innerMenu-enter-active {
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+.innerMenu-exit-active {
+  transform: translateX(110%);
+  transition: all 500ms ease;
+}
+
+.stat {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.textPad {
+  padding: 10px;
+}

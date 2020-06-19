@@ -1,0 +1,124 @@
+:root {
+  --scale: scaleX(0);
+  --opacity: 0;
+  --color: dodgerblue;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loginBody {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  font-size: 2rem;
+}
+
+#loginButtons,
+#loginButtons:active,
+#loginButtons:focus {
+  border: none;
+  outline: none;
+  font-size: inherit;
+}
+
+input {
+  display: inline;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 25px;
+  width: 333px;
+}
+
+.wrapper,
+.wrapper2 {
+  position: relative;
+  left: 120px;
+  top: 15px;
+  border: 2px solid var(--color);
+  border-radius: 10px;
+  padding-left: 10px;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+  width: 497px;
+}
+
+.wrapper2 {
+  margin-bottom: 50px;
+  height: 80px;
+}
+
+#userName {
+  padding-top: 20px;
+  width: 100%;
+}
+.eye {
+  display: inline-block;
+  background-color: transparent;
+  padding: 5px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.action {
+  display: inline-block;
+  width: 100px;
+  padding: 20px;
+  background: var(--color);
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.action::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: inherit;
+  border-radius: 5px 0 0 5px;
+  width: calc(100% - 99px);
+  height: 100%;
+  transform: var(--scale);
+  transform-origin: right;
+  transition: transform 0.75s;
+}
+.action::after {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 4.5rem;
+  width: 100%;
+  height: 100%;
+  transform: var(--scale);
+  opacity: var(--opacity);
+  transition: opacity 1s;
+}
+
+.arrow,
+.check,
+.times,
+.closedEye,
+.openEye {
+  height: 32px;
+  padding-top: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.openEye,
+.closedEye {
+  padding-right: 40px;
+}
+
+#hide {
+  display: none;
+}

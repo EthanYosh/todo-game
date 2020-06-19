@@ -8,9 +8,11 @@ html {
   height: fit-content;
 }
 
-h1, p, .samePara {
+h1,
+p,
+.samePara {
   text-align: center;
-  color: lightblue
+  color: lightblue;
 }
 
 .samePara {
@@ -27,7 +29,6 @@ h1, p, .samePara {
   text-align: left;
   padding-left: 10px;
 }
-
 
 #editButton {
   position: right;
@@ -54,11 +55,9 @@ h1, p, .samePara {
   padding: 20px;
 }
 
-
 .container {
-  padding: 0 1rem ;
+  padding: 0 1rem;
 }
-
 
 .submitButton-addToDo:hover {
   background: rgb(119, 110, 110);
